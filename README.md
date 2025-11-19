@@ -11,14 +11,14 @@ Runs everything automatically: install → Docker → Prisma → ready to code!
 Or Follow These Steps
 Step 1: Install Dependencies
 
-npm install
+Step 2: npm install
 
-Step 2: Start Docker (PostgreSQL & pgAdmin)
+Step 3: Start Docker (PostgreSQL & pgAdmin)
 
-npm run docker:up
+Step 4: npm run docker:up
 
 Wait 5-10 seconds for PostgreSQL to fully start
-Step 3: Setup Prisma & Database
+Step 6: Setup Prisma & Database
 
 npm run db:generate
 npm run db:migrate
