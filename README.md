@@ -2,11 +2,13 @@
 
 
 
-A production-ready web application for validating and cleaning bulk Kenyan phone numbers with advanced features like libphonenumber validation, duplicate detection, and telco identification.A powerful, production-ready CSV data cleaning and validation application built with **Next.js**, **PostgreSQL**, and **TypeScript**. Specifically designed for validating and managing bulk Kenyan phone numbers with advanced features like libphonenumber validation, duplicate detection, telco identification, and batch operations.
+A production-ready web application for validating and cleaning bulk Kenyan phone numbers with advanced features like libphonenumber validation, duplicate detection, and telco identification.
+
+It is built with Next.js as the backend and frontend.
 
 
 
-## What It Does![PEAK Brand](./public/image.png)
+## What It Does
 
 
 
@@ -26,7 +28,6 @@ A production-ready web application for validating and cleaning bulk Kenyan phone
 
 - **Real-time feedback** - toast notifications for all actions
 
-The PEAK CSV Data Cleaner is an enterprise-grade tool for:
 
 ## How to Run
 
