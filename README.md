@@ -1,85 +1,138 @@
-# PEAK CSV Data Cleaner# PEAK CSV Data Cleaner
+# PEAK CSV Data Cleaner# PEAK CSV Data Cleaner# PEAK CSV Data Cleaner
 
 
 
-A production-ready web application for validating and cleaning bulk Kenyan phone numbers with advanced features like libphonenumber validation, duplicate detection, and telco identification.
-
-It is built with Next.js as the backend and frontend.
+Validate and clean bulk Kenyan phone numbers with libphonenumber-js validation, duplicate detection, and telco identification.
 
 
 
-## What It Does
+## What It DoesA production-ready web application for validating and cleaning bulk Kenyan phone numbers with advanced features like libphonenumber validation, duplicate detection, and telco identification.
 
 
 
-- **Upload CSV files** with phone numbers
+- Upload CSV files and validate phone numbers automaticallyIt is built with Next.js as the backend and frontend.
 
-- **Automatic validation** using libphonenumber-js
+- Auto-fix invalid formats (removes chars, adds +254, converts local to international)
 
-- **Smart auto-fix** - removes invalid characters, adds +254 prefix##  What This Site Does
+- Detect and remove duplicates
 
-- **Error categorization** - identifies invalid chars, too short, too long, invalid format
+- Identify mobile operators (Safaricom, Airtel, Telkom)
+
+- Batch operations: clean records, export CSV, submit to API## What It Does
+
+- Real-time validation feedback with toast notifications
+
+- PostgreSQL data persistence
+
+
+
+## Quick Start- **Upload CSV files** with phone numbers
+
+
+
+```bash- **Automatic validation** using libphonenumber-js
+
+git clone https://github.com/Hosea-kibet/PEAK-HACKATHON.git
+
+cd csv-cleaner- **Smart auto-fix** - removes invalid characters, adds +254 prefix##  What This Site Does
+
+chmod +x start-dev.sh
+
+./start-dev.sh- **Error categorization** - identifies invalid chars, too short, too long, invalid format
+
+```
 
 - **Duplicate detection** - finds and removes duplicate numbers
 
-- **Telco identification** - identifies Safaricom, Airtel, Telkom
+Or manually:
 
-- **Batch operations** - clean multiple records, submit to API, download CSV###  ##  Features
-
-- **Real-time feedback** - toast notifications for all actions
-
-
-## How to Run
-
-- **Upload & Validate** CSV files containing phone numbers
-
-### Quick Start (Automated)
-
--  **Auto-Clean** phone numbers (remove invalid chars, add country codes, format)
-
-```bash
-
-git clone https://github.com/Hosea-kibet/PEAK-HACKATHON.git-  **Identify Issues** - Categorize errors (invalid characters, too short, too long, invalid format)##  What This Site Does### Core Features
-
-cd csv-cleaner
-
-chmod +x start-dev.sh-  **Detect Duplicates** - Find and remove duplicate phone numbers
-
-./start-dev.sh
-
-```-  **Identify Telcos** - Determine which mobile operator each number belongs to-  **CSV Upload & Preview** - Drag-and-drop or browse to upload CSV files
-
-
-
-### Manual Setup-  **Batch Process** - Clean multiple records at once with a single click
-
-
-
-```bash-  **Generate Reports** - Download CSV reports of cleaned data###  Main Purpose-  **Phone Number Validation** - Automatic validation with yup schema validation
+```bash- **Telco identification** - identifies Safaricom, Airtel, Telkom
 
 npm install
 
-docker-compose up -d-  **Persistent Storage** - Save cleaned data to PostgreSQL database
+docker-compose up -d- **Batch operations** - clean multiple records, submit to API, download CSV###  ##  Features
 
-npx prisma generate
+npx prisma migrate dev
 
-npx prisma migrate dev-  **Submit to API** - Send clean records to PEAK backend with success notificationsThe PEAK CSV Data Cleaner is an enterprise-grade tool for:-  **Error Highlighting** - Visual indicators for invalid entries
-
-npm run dev
+npm run dev- **Real-time feedback** - toast notifications for all actions
 
 ```
 
 
 
-Open http://localhost:3000###  Workflow-  **Upload & Validate** CSV files containing phone numbers-  **Inline Editing** - Edit problematic rows directly in the table
+Visit http://localhost:3000
 
 
 
-## Built On1. **Upload** a CSV file with phone numbers
+## Built With### Quick Start (Automated)
 
 
+
+**Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS, react-hot-toast, @tanstack/react-table, libphonenumber-js, PapaParse-  **Auto-Clean** phone numbers (remove invalid chars, add country codes, format)
+
+
+
+**Backend:** Next.js API Routes, PostgreSQL 16, Prisma ORM```bash
+
+
+
+**DevOps:** Docker, Docker Compose, pgAdmingit clone https://github.com/Hosea-kibet/PEAK-HACKATHON.git-   
+
+
+
+## Docker Servicescd csv-cleaner
+
+
+
+- PostgreSQL: `localhost:5432` (csvuser:csvpass123)
+
+- pgAdmin: `http://localhost:5050` (admin@csvcleaner.com:admin123)npm install
+
+
+
+## Scriptsdocker-compose up -d-  **Persistent Storage** - Save cleaned data to PostgreSQL database
+
+
+
+```bashnpx prisma generate
+
+npm run dev              # Development
+
+npm run build           # Production buildnpx prisma migrate dev-  **Submit to API** - Send clean records to PEAK backend with success notificationsThe PEAK CSV Data Cleaner is an enterprise-grade tool for:-  **Error Highlighting** - Visual indicators for invalid entries
+
+npx prisma migrate dev  # Database migrations
+
+docker-compose up -d    # Start Dockernpm run dev
+
+```
+
+```
+
+## Features
+
+
+
+- Multiple phone formats supported (international, local, short)
+
+- 7 error types with detailed messagesOpen http://localhost:3000###  Workflow-  **Upload & Validate** CSV files containing phone numbers-  **Inline Editing** - Edit problematic rows directly in the table
+
+- Batch clean, delete duplicates, remove invalid records
+
+- Export cleaned data as CSV
+
+- Mock API submission
+
+- PEAK brand theme (Navy blue + Orange)## Built On1. **Upload** a CSV file with phone numbers
+
+- Mobile responsive
+
+
+
+## License
 
 ### Frontend2. **Automatic Validation** runs immediately using libphonenumber-js-  **Auto-Clean** phone numbers (remove invalid chars, add country codes, format)-  **Advanced Data Table** - Built with @tanstack/react-table (sorting, filtering, pagination)
+
+MIT
 
 - **Next.js 16** - React framework with App Router
 
@@ -155,7 +208,6 @@ docker-compose down    # Stop Docker- **Real-Time Validation** - Instant feedbac
 
 ## Key Features
 
-- **Balance Checking** - Mock API for verifying sufficient units before submission
 
 - Supports multiple phone formats (international, local, short)
 
@@ -165,9 +217,8 @@ docker-compose down    # Stop Docker- **Real-Time Validation** - Instant feedbac
 
 - CSV export of cleaned data- **Telco Distribution** - See breakdown of operators in your dataset
 
-- Mock API submission with loading/success toasts
+- Mock API submission with loading.
 
-- PEAK brand theme (Navy blue + Orange)2. **Automatic Validation** runs immediately using libphonenumber-js-  **Real-time Balance Analysis** - Check available units against data to upload
 
 - PostgreSQL data persistence
 
