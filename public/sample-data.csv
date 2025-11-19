@@ -1,0 +1,21 @@
+Phone Number,Bundle Size,Customer Name,Email
+0712345678,100,John Doe,john@example.com
+254723456789,250,Jane Smith,jane@example.com
+722111222,500,Bob Wilson,bob@example.com
++254733445566,1000,Alice Brown,alice@example.com
+0700123456,100,Charlie Davis,charlie@example.com
+254711223344,250,David Lee,david@example.com
+0722334455,100,Emma White,emma@example.com
+712345678,500,Frank Miller,frank@example.com
+0712345678,750,Grace Johnson,grace@example.com
+254734567890,100,Henry Taylor,henry@example.com
+0755123456,250,Ivy Anderson,ivy@example.com
+731445566,500,Jack Thomas,jack@example.com
+2547123456,100,Invalid Entry 1,test1@example.com
+07123,50,Invalid Entry 2,test2@example.com
+254099887766,200,Invalid Prefix,test3@example.com
+0712345678,300,Duplicate Entry 1,dup1@example.com
++254770123456,150,Kevin Martinez,kevin@example.com
+0780234567,200,Laura Garcia,laura@example.com
+110234567,100,Mary Rodriguez,mary@example.com
+254112345678,500,Nick Clark,nick@example.com

@@ -6,21 +6,46 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push --force-reset",
+    "db:studio": "prisma studio",
+    "db:seed": "prisma db seed",
+    "db:test": "tsx test-db-connection.ts",
+    "db:fix-phones": "tsx scripts/fix-scientific-notation.ts",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "setup": "npm install && docker-compose up -d && npx prisma generate && npx prisma migrate dev"
   },
   "dependencies": {
+    "@prisma/client": "^6.19.0",
+    "@tanstack/react-table": "^8.21.3",
+    "dotenv": "^17.2.3",
+    "file-saver": "^2.0.5",
+    "libphonenumber-js": "^1.12.27",
+    "lucide-react": "^0.554.0",
     "next": "16.0.3",
+    "papaparse": "^5.5.3",
+    "pg": "^8.16.3",
+    "prisma": "^6.19.0",
     "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "react-dom": "19.2.0",
+    "react-hot-toast": "^2.6.0",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/file-saver": "^2.0.7",
     "@types/node": "^20",
+    "@types/papaparse": "^5.5.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.0.3",
     "tailwindcss": "^4",
+    "tsx": "^4.20.6",
     "typescript": "^5"
   }
 }
