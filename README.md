@@ -24,7 +24,7 @@ It is built with Next.js as the backend and frontend.
 
 - **Telco identification** - identifies Safaricom, Airtel, Telkom
 
-- **Batch operations** - clean multiple records, submit to API, download CSV###  Main Purpose![PEAK Brand](./public/image.png)##  Features
+- **Batch operations** - clean multiple records, submit to API, download CSV###  ##  Features
 
 - **Real-time feedback** - toast notifications for all actions
 
