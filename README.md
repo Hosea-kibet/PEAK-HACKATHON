@@ -8,6 +8,44 @@ A lightweight, production-ready tool for cleaning and validating bulk Kenyan pho
 
 ---
 
+## Quick Setup (3 minutes)
+
+### Fastest Way - One Command
+```bash
+npm run setup
+```
+Runs everything automatically: install → Docker → Prisma → ready to code!
+
+---
+
+### Or Follow These Steps
+
+#### Step 1: Install Dependencies
+```bash
+npm install
+```
+
+#### Step 2: Start Docker (PostgreSQL & pgAdmin)
+```bash
+npm run docker:up
+```
+⏳ Wait 5-10 seconds for PostgreSQL to fully start
+
+#### Step 3: Setup Prisma & Database
+```bash
+npm run db:generate
+npm run db:migrate
+```
+
+#### Step 4: Start Development Server
+```bash
+npm run dev
+```
+
+🎉 Visit `http://localhost:3000`
+
+---
+
 ## Features
 
 - ✅ Validate phone numbers with libphonenumber-js
@@ -19,20 +57,6 @@ A lightweight, production-ready tool for cleaning and validating bulk Kenyan pho
 - ✅ Real-time toast notifications
 - ✅ PostgreSQL history & storage
 - ✅ Mobile responsive interface
-
----
-
-## Quick Setup
-
-```bash
-npm install
-docker-compose up -d
-npx prisma generate
-npx prisma migrate dev
-npm run dev
-```
-
-Visit `http://localhost:3000`
 
 ---
 
@@ -62,17 +86,27 @@ npm run start            # Run production
 npm run lint             # Lint code
 ```
 
-### Prisma
+### Database (Prisma)
 ```bash
-npx prisma generate      # Generate Prisma Client
-npx prisma migrate dev   # Run migrations
-npx prisma studio        # Open Prisma Studio GUI
+npm run db:generate      # Generate Prisma Client
+npm run db:migrate       # Run database migrations
+npm run db:push          # Push schema to database (force reset)
+npm run db:studio        # Open Prisma Studio GUI
+npm run db:seed          # Seed database
+npm run db:test          # Test database connection
+npm run db:fix-phones    # Fix scientific notation in phone numbers
 ```
 
 ### Docker
 ```bash
-docker-compose up -d     # Start Docker services
-docker-compose down      # Stop containers
+npm run docker:up        # Start Docker containers
+npm run docker:down      # Stop Docker containers
+npm run docker:logs      # View Docker logs
+```
+
+### Complete Setup
+```bash
+npm run setup            # Install + Docker + Generate + Migrate (all-in-one)
 ```
 
 ---
@@ -81,7 +115,7 @@ docker-compose down      # Stop containers
 
 | Category | Technologies |
 |----------|--------------|
-| **Frontend** | Next.js, React, TypeScript, Tailwind CSS, PapaParse, TanStack Table, react-hot-toast |
+| **Frontend** | Next.js 16, React 19, TypeScript, Tailwind CSS, PapaParse, TanStack Table, react-hot-toast |
 | **Backend** | Next.js API Routes |
 | **Validation** | libphonenumber-js |
 | **Database** | PostgreSQL 16, Prisma ORM |
