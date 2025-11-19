@@ -20,7 +20,7 @@ npm install
 ```bash
 npm run docker:up
 ```
-⏳ Wait 5-10 seconds for PostgreSQL to start
+ Wait 5-10 seconds for PostgreSQL to start
 
 **Step 3: Setup Prisma & Database**
 ```bash
@@ -33,7 +33,7 @@ npm run db:migrate
 npm run dev
 ```
 
-🎉 Visit `http://localhost:3000`
+ Visit `http://localhost:3000`
 
 ---
 
