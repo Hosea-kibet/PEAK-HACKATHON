@@ -8,17 +8,8 @@ A lightweight, production-ready tool for cleaning and validating bulk Kenyan pho
 
 ---
 
-## Quick Setup
-
-### Fastest Way - One Command
-```bash
-npm run setup
-```
-Runs everything automatically: install → Docker → Prisma → ready!
-
----
-
-### Or Follow These Steps
+##  Setup
+Follow These Steps
 
 **Step 1: Install Dependencies**
 ```bash
@@ -48,15 +39,15 @@ npm run dev
 
 ## Features
 
-- ✅ Validate phone numbers with libphonenumber-js
-- ✅ Auto-fix invalid formats (+254, remove characters, normalize)
-- ✅ Detect & remove duplicates
-- ✅ Identify Safaricom, Airtel, Telkom
-- ✅ CSV upload & export
-- ✅ Inline editing for invalid entries
-- ✅ Real-time toast notifications
-- ✅ PostgreSQL history & storage
-- ✅ Mobile responsive interface
+-  Validate phone numbers with libphonenumber-js
+-  Auto-fix invalid formats (+254, remove characters, normalize)
+-  Detect & remove duplicates
+-  Identify Safaricom, Airtel, Telkom
+-  CSV upload & export
+-  Inline editing for invalid entries
+-  Real-time toast notifications
+-  PostgreSQL history & storage
+-  Mobile responsive interface
 
 ---
 
