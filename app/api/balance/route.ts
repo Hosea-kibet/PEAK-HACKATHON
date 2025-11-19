@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-// This is a mock balance checker
-// In production, this would connect to your actual balance API
 
 export async function GET() {
   try {

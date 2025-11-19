@@ -188,10 +188,10 @@ export default function DataTable({
                               ? 'bg-yellow-100 text-yellow-800 border-yellow-300'
                               : 'bg-red-100 text-red-800 border-red-300'
                           }`}>
-                            {validation.validationResult.errorType === 'INVALID_CHARACTERS' && '⚠️ Invalid Chars'}
+                            {validation.validationResult.errorType === 'INVALID_CHARACTERS' && 'Invalid Chars'}
                             {validation.validationResult.errorType === 'TOO_SHORT' && '📏 Too Short'}
                             {validation.validationResult.errorType === 'TOO_LONG' && '📏 Too Long'}
-                            {validation.validationResult.errorType === 'INVALID_FORMAT' && '❌ Invalid Format'}
+                            {validation.validationResult.errorType === 'INVALID_FORMAT' && 'Invalid Format'}
                             {validation.validationResult.errorType === 'INVALID_PREFIX' && '🔢 Invalid Prefix'}
                             {validation.validationResult.errorType === 'EMPTY' && '∅ Empty'}
                           </span>
@@ -316,7 +316,7 @@ export default function DataTable({
             )}
             {hideSearch && (
               <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-2 text-sm text-blue-700">
-                ℹ️ Server-side search coming soon
+                Server-side search coming soon
               </div>
             )}
           </div>

@@ -101,7 +101,7 @@ export default function Home() {
       if (response.ok) {
         const data = await response.json();
         setUncleanedFiles(data.files || []);
-        console.log(`📊 Database Stats:
+        console.log(`Database Stats:
 - Total Raw Records: ${data.totalRaw}
 - Total Cleaned: ${data.totalCleaned}
 - Uncleaned Records: ${data.totalUncleaned}
@@ -259,7 +259,7 @@ export default function Home() {
           duplicates: result.duplicates,
           duplicatePhones: result.duplicatePhones,
         });
-        console.log(`✅ ${result.saved} new records saved, ${result.duplicates} duplicates skipped`);
+        console.log(`${result.saved} new records saved, ${result.duplicates} duplicates skipped`);
         // Refresh uncleaned records list
         fetchUncleanedRecords();
       } else if (response.status === 409) {
@@ -269,7 +269,7 @@ export default function Home() {
           duplicates: result.duplicates,
           duplicatePhones: result.duplicatePhones,
         });
-        console.warn('⚠️ All records are duplicates:', result);
+        console.warn('All records are duplicates:', result);
       } else {
         console.error('Failed to save raw data:', result);
         setUploadResults({
@@ -323,7 +323,7 @@ export default function Home() {
         handleUpdateCell(rowId, column, validation.validationResult.formatted);
       } else {
         // No valid formatted version means it needs manual cleaning
-        alert('⚠️ This number cannot be auto-fixed. Please edit manually.');
+        alert('This number cannot be auto-fixed. Please edit manually.');
       }
     }
   };
@@ -393,8 +393,7 @@ export default function Home() {
     detectDuplicates(updatedRows, phoneColumn);
     setSelectedRows(new Set());
     
-    toast.success(`✅ Deleted ${selectedDuplicates.length} duplicate record(s)`, {
-      icon: '🗑️',
+    toast.success(`Deleted ${selectedDuplicates.length} duplicate record(s)`, {
     });
   };
 
@@ -427,9 +426,8 @@ export default function Home() {
         toast.dismiss(loadingToast);
         
         // Show success toast
-        toast.success(`🎉 Clean records submitted to PEAK HURRAY! ${validRecords.length} records sent successfully!`, {
+        toast.success(`Clean records submitted to PEAK HURRAY! ${validRecords.length} records sent successfully!`, {
           duration: 5000,
-          icon: '🚀',
           style: {
             background: '#10b981',
             color: '#fff',
@@ -492,7 +490,7 @@ export default function Home() {
     
     if (!isValid) {
       // If invalid, don't save to DB - flag for manual cleaning
-      alert('⚠️ This number is invalid and cannot be auto-cleaned.\n\nPlease edit it manually or fix the issues first.\n\nError: ' + phoneValidation.validationResult.errors.join(', '));
+      alert('This number is invalid and cannot be auto-cleaned.\n\nPlease edit it manually or fix the issues first.\n\nError: ' + phoneValidation.validationResult.errors.join(', '));
       return;
     }
 
@@ -556,16 +554,16 @@ export default function Home() {
 
         // Show appropriate message
         if (response.status === 409) {
-          alert('⚠️ Record already in database but updated in table. Now showing in Valid records.');
+          alert('Record already in database but updated in table. Now showing in Valid records.');
         } else {
-          alert('✅ Record cleaned and saved! Now showing in Valid records.');
+          alert('Record cleaned and saved! Now showing in Valid records.');
         }
       } else {
-        alert('❌ Failed to save to database');
+        alert('Failed to save to database');
       }
     } catch (error) {
       console.error('Error cleaning record:', error);
-      alert('❌ Error: ' + (error instanceof Error ? error.message : 'Unknown error'));
+      alert('Error: ' + (error instanceof Error ? error.message : 'Unknown error'));
     } finally {
       setIsCleaning(false);
     }
@@ -599,34 +597,7 @@ export default function Home() {
     setRows(sorted);
   };
 
-  // Submit to API
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch('/api/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          data: rows,
-          metadata: {
-            fileName: file?.name,
-            totalRecords: rows.length,
-            validRecords: validations.filter(v => v.validationResult.isValid).length,
-          },
-        }),
-      });
-      
-      const result = await response.json();
-      
-      if (result.success) {
-        alert('Data submitted successfully!');
-      } else {
-        alert('Submission failed: ' + result.message);
-      }
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('Failed to submit data');
-    }
-  };
+
 
   // Reset
   const handleReset = () => {
@@ -695,16 +666,20 @@ export default function Home() {
   }, [rows, recordFilter, invalidSubFilter, validations, duplicateIds, phoneColumn]);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-8 px-4">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="max-w-7xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            CSV Data Cleaner
-          </h1>
-          <p className="text-gray-600">
-            Upload, validate, and clean your CSV data with ease
-          </p>
+          <div className="flex items-center gap-4 mb-4">
+            <div>
+              <h1 className="text-4xl font-bold text-blue-900 mb-2">
+                CSV Data Cleaner
+              </h1>
+              <p className="text-blue-600">
+                Upload, validate, and clean your CSV data with ease
+              </p>
+            </div>
+          </div>
         </header>
 
     
@@ -712,7 +687,7 @@ export default function Home() {
         {availableFiles.length > 0 && rows.length === 0 && (
           <div className="mb-6 bg-blue-50 border-l-4 border-blue-400 p-4 rounded">
             <h3 className="text-lg font-semibold text-blue-800 mb-3">
-              📁 Previously Uploaded Files
+               Previously Uploaded Files
             </h3>
             <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {availableFiles.map((file, idx) => (
@@ -783,9 +758,9 @@ export default function Home() {
                         ? 'text-yellow-900'
                         : 'text-green-900'
                     }`}>
-                      {uploadResults.saved === 0 && uploadResults.duplicates > 0 ? '⚠️ All Records Are Duplicates!' : 
-                       uploadResults.duplicates > 0 ? '⚠️ Upload Complete with Duplicates' : 
-                       '✅ Upload Successful!'}
+                      {uploadResults.saved === 0 && uploadResults.duplicates > 0 ? 'All Records Are Duplicates!' : 
+                       uploadResults.duplicates > 0 ? 'Upload Complete with Duplicates' : 
+                       'Upload Successful!'}
                     </h3>
                     
                     <div className="grid grid-cols-2 gap-4 mb-4">
@@ -881,15 +856,15 @@ export default function Home() {
             {!isUploading && (
               <>
                 {/* Filter Buttons */}
-                <div className="bg-white rounded-lg shadow-md p-4 mb-4">
+                <div className="bg-white rounded-lg shadow-md p-4 mb-4 border-t-4 border-blue-900">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-gray-700">Show:</span>
+                    <span className="text-sm font-medium text-blue-900">Show:</span>
                     <button
                       onClick={() => setRecordFilter('all')}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                         recordFilter === 'all'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-blue-900 text-white'
+                          : 'bg-blue-50 text-blue-700 hover:bg-blue-100'
                       }`}
                     >
                       All ({totalRecords})
@@ -898,8 +873,8 @@ export default function Home() {
                       onClick={() => setRecordFilter('valid')}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                         recordFilter === 'valid'
-                          ? 'bg-green-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-emerald-600 text-white'
+                          : 'bg-emerald-50 text-emerald-700 hover:bg-emerald-100'
                       }`}
                     >
                       Valid ({validCount})
@@ -909,7 +884,7 @@ export default function Home() {
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                         recordFilter === 'invalid'
                           ? 'bg-red-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          : 'bg-red-50 text-red-700 hover:bg-red-100'
                       }`}
                     >
                       Invalid ({invalidCount})
@@ -918,8 +893,8 @@ export default function Home() {
                       onClick={() => setRecordFilter('duplicates')}
                       className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                         recordFilter === 'duplicates'
-                          ? 'bg-yellow-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-orange-500 text-white'
+                          : 'bg-orange-50 text-orange-700 hover:bg-orange-100'
                       }`}
                     >
                       Duplicates ({duplicateCount})
@@ -948,7 +923,7 @@ export default function Home() {
                             : 'bg-purple-50 text-purple-700 hover:bg-purple-100'
                         }`}
                       >
-                        ⚠️ Invalid Characters
+                        Invalid Characters
                       </button>
                       <button
                         onClick={() => setInvalidSubFilter('too_short')}
@@ -989,7 +964,7 @@ export default function Home() {
                   <div className="flex flex-wrap gap-3 items-center">
                     {/* Selection info */}
                     {selectedRows.size > 0 && (
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-blue-900 bg-blue-100 px-3 py-1 rounded-lg">
                         {selectedRows.size} selected
                       </span>
                     )}
@@ -997,7 +972,7 @@ export default function Home() {
                     {selectedRows.size > 0 && recordFilter === 'valid' && (
                       <button
                         onClick={handleBatchSubmit}
-                        className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold shadow-md"
                       >
                         <Download className="h-4 w-4" />
                         Submit Selected ({selectedRows.size})
@@ -1007,7 +982,7 @@ export default function Home() {
                     {selectedRows.size > 0 && recordFilter === 'duplicates' && (
                       <button
                         onClick={handleBatchDelete}
-                        className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-md"
                       >
                         <Trash2 className="h-4 w-4" />
                         Delete Selected ({selectedRows.size})
@@ -1017,14 +992,14 @@ export default function Home() {
                     {/* Global actions */}
                   <button
                     onClick={handleAutoFixAll}
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-blue-900 text-white rounded-lg hover:bg-blue-800 transition-colors font-semibold shadow-md"
                   >
                     <Wand2 className="h-4 w-4" />
                     Auto-Fix All
                   </button>
                   <button
                     onClick={handleRemoveDuplicates}
-                    className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-semibold shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={duplicateCount === 0}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -1032,7 +1007,7 @@ export default function Home() {
                   </button>
                   <button
                     onClick={handleRemoveInvalid}
-                    className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={invalidCount === 0}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -1040,7 +1015,7 @@ export default function Home() {
                   </button>
                   <button
                     onClick={handleReset}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                    className="flex items-center gap-2 px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors font-semibold shadow-md"
                   >
                     <RefreshCw className="h-4 w-4" />
                     Reset

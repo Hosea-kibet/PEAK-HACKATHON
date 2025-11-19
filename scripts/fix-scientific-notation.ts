@@ -78,7 +78,7 @@ async function main() {
   console.log(`Found ${invalidRecords.length} invalid records\n`);
 
   if (invalidRecords.length === 0) {
-    console.log('✅ No invalid records to fix!');
+    console.log('No invalid records to fix!');
     return;
   }
 
@@ -87,7 +87,7 @@ async function main() {
 
   for (const record of invalidRecords) {
     const originalPhone = record.originalPhone;
-    console.log(`\n📱 Processing: ${originalPhone}`);
+    console.log(`\nProcessing: ${originalPhone}`);
     console.log(`   Original error: ${record.errorMessage}`);
 
     // Re-validate with new logic
@@ -103,7 +103,7 @@ async function main() {
           errorMessage: null,
         },
       });
-      console.log(`   ✅ FIXED! New value: ${result.formatted}`);
+      console.log(`   FIXED! New value: ${result.formatted}`);
       fixed++;
     } else {
       // Even if invalid, save the best attempt (cleaned digits)
@@ -115,17 +115,17 @@ async function main() {
           errorMessage: result.error,
         },
       });
-      console.log(`   ⚠️  Still invalid but saved cleaned version: ${cleanedPhoneValue}`);
+      console.log(`   Still invalid but saved cleaned version: ${cleanedPhoneValue}`);
       console.log(`   Error: ${result.error}`);
       stillInvalid++;
     }
   }
 
   console.log('\n' + '='.repeat(50));
-  console.log(`\n📊 Summary:`);
+  console.log(`\nSummary:`);
   console.log(`   Total processed: ${invalidRecords.length}`);
-  console.log(`   ✅ Fixed (now valid): ${fixed}`);
-  console.log(`   ⚠️  Updated (still invalid but cleaned): ${stillInvalid}`);
+  console.log(`   Fixed (now valid): ${fixed}`);
+  console.log(`   Updated (still invalid but cleaned): ${stillInvalid}`);
   console.log('');
 }
 

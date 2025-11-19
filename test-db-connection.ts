@@ -7,19 +7,19 @@ async function testConnection() {
     
     // Test connection
     await prisma.$connect();
-    console.log('✅ Database connected successfully!');
+    console.log('Database connected successfully!');
     
     // Count records in RawData
     const rawCount = await prisma.rawData.count();
-    console.log(`📊 RawData table has ${rawCount} records`);
+    console.log(`RawData table has ${rawCount} records`);
     
     // Count records in CleanedData
     const cleanedCount = await prisma.cleanedData.count();
-    console.log(`📊 CleanedData table has ${cleanedCount} records`);
+    console.log(`CleanedData table has ${cleanedCount} records`);
     
     // Show latest 5 raw records
     if (rawCount > 0) {
-      console.log('\n📋 Latest 5 raw records:');
+      console.log('\nLatest 5 raw records:');
       const latestRaw = await prisma.rawData.findMany({
         take: 5,
         orderBy: { createdAt: 'desc' },
@@ -33,9 +33,9 @@ async function testConnection() {
     }
     
     await prisma.$disconnect();
-    console.log('\n✅ Test completed!');
+    console.log('\nTest completed!');
   } catch (error) {
-    console.error('❌ Error:', error);
+    console.error('Error:', error);
     await prisma.$disconnect();
     process.exit(1);
   }
