@@ -1,93 +1,70 @@
-# PEAK CSV Data Cleaner
+PEAK CSV Data Cleaner
 
 A lightweight, production-ready tool for cleaning and validating bulk Kenyan phone numbers.
 
-**Workflow:** Upload CSV → Clean → Fix → Deduplicate → Identify Telcos → Export CSV
+Workflow: Upload CSV → Clean → Fix → Deduplicate → Identify Telcos → Export CSV
 
-**Stack:** Next.js + Prisma + PostgreSQL + Docker
+Stack: Next.js + Prisma + PostgreSQL + Docker
 
----
 
-## Quick Setup (3 minutes)
-
-### Fastest Way - One Command
-```bash
-npm run setup
-```
 Runs everything automatically: install → Docker → Prisma → ready to code!
+Or Follow These Steps
+Step 1: Install Dependencies
 
----
-
-### Or Follow These Steps
-
-#### Step 1: Install Dependencies
-```bash
 npm install
-```
 
-#### Step 2: Start Docker (PostgreSQL & pgAdmin)
-```bash
+Step 2: Start Docker (PostgreSQL & pgAdmin)
+
 npm run docker:up
-```
-⏳ Wait 5-10 seconds for PostgreSQL to fully start
 
-#### Step 3: Setup Prisma & Database
-```bash
+Wait 5-10 seconds for PostgreSQL to fully start
+Step 3: Setup Prisma & Database
+
 npm run db:generate
 npm run db:migrate
-```
 
-#### Step 4: Start Development Server
-```bash
+Step 4: Start Development Server
+
 npm run dev
-```
 
-🎉 Visit `http://localhost:3000`
+ Visit http://localhost:3000
+Features
 
----
+     Validate phone numbers with libphonenumber-js
+     Auto-fix invalid formats (+254, remove characters, normalize)
+     Detect & remove duplicates
+     Identify Safaricom, Airtel, Telkom
+     CSV upload & export
+     Inline editing for invalid entries
+     Real-time toast notifications
+     PostgreSQL history & storage
+     Mobile responsive interface
 
-## Features
+Docker Services
+PostgreSQL
 
-- ✅ Validate phone numbers with libphonenumber-js
-- ✅ Auto-fix invalid formats (+254, remove characters, normalize)
-- ✅ Detect & remove duplicates
-- ✅ Identify Safaricom, Airtel, Telkom
-- ✅ CSV upload & export
-- ✅ Inline editing for invalid entries
-- ✅ Real-time toast notifications
-- ✅ PostgreSQL history & storage
-- ✅ Mobile responsive interface
+    Host: localhost
+    Port: 5432
+    User: csvuser
+    Password: csvpass123
+    Database: csv_cleaner
 
----
+pgAdmin
 
-## Docker Services
+    URL: http://localhost:5050
+    Email: admin@csvcleaner.com
+    Password: admin123
 
-### PostgreSQL
-- **Host:** localhost
-- **Port:** 5432
-- **User:** csvuser
-- **Password:** csvpass123
-- **Database:** csv_cleaner
+Available Scripts
+Development
 
-### pgAdmin
-- **URL:** http://localhost:5050
-- **Email:** admin@csvcleaner.com
-- **Password:** admin123
-
----
-
-## Available Scripts
-
-### Development
-```bash
 npm run dev              # Start development server
 npm run build            # Production build
 npm run start            # Run production
 npm run lint             # Lint code
-```
 
-### Database (Prisma)
-```bash
+Database (Prisma)
+
 npm run db:generate      # Generate Prisma Client
 npm run db:migrate       # Run database migrations
 npm run db:push          # Push schema to database (force reset)
@@ -95,34 +72,23 @@ npm run db:studio        # Open Prisma Studio GUI
 npm run db:seed          # Seed database
 npm run db:test          # Test database connection
 npm run db:fix-phones    # Fix scientific notation in phone numbers
-```
 
-### Docker
-```bash
+Docker
+
 npm run docker:up        # Start Docker containers
 npm run docker:down      # Stop Docker containers
 npm run docker:logs      # View Docker logs
-```
 
-### Complete Setup
-```bash
+Complete Setup
+
 npm run setup            # Install + Docker + Generate + Migrate (all-in-one)
-```
 
----
-
-## Tech Stack
-
-| Category | Technologies |
-|----------|--------------|
-| **Frontend** | Next.js 16, React 19, TypeScript, Tailwind CSS, PapaParse, TanStack Table, react-hot-toast |
-| **Backend** | Next.js API Routes |
-| **Validation** | libphonenumber-js |
-| **Database** | PostgreSQL 16, Prisma ORM |
-| **DevOps** | Docker, Docker Compose, pgAdmin |
-
----
-
-## License
-
+Tech Stack
+Category 	Technologies
+Frontend 	Next.js 16, React 19, TypeScript, Tailwind CSS, PapaParse, TanStack Table, react-hot-toast
+Backend 	Next.js API Routes
+Validation 	libphonenumber-js
+Database 	PostgreSQL 16, Prisma ORM
+DevOps 	Docker, Docker Compose, pgAdmin
+License
 MIT
